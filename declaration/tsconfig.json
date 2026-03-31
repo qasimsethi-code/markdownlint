@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "module": "nodenext",
+    "outDir": "../dts",
+    "rootDir": "..",
+    "target": "es2019",
+    "types": [
+      "node"
+    ]
+  },
+  "files": [
+    "../lib/exports.mjs",
+    "../lib/exports-async.mjs",
+    "../lib/exports-promise.mjs",
+    "../lib/exports-sync.mjs",
+    "../lib/markdownlint.mjs",
+    "../lib/resolve-module.cjs"
+  ]
+}

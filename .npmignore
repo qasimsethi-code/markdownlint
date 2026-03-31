@@ -4,6 +4,7 @@
 .npmrc
 .vscode
 coverage
+declaration
 demo/*
 doc-build
 eslint.config.mjs

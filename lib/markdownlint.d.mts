@@ -218,13 +218,13 @@ export type ParserMicromark = {
     tokens: MicromarkToken[];
 };
 /**
- * markdown-it token.
+ * markdown-it base token.
  */
-export type MarkdownItToken = {
+export type MarkdownItBaseToken = {
     /**
      * HTML attributes.
      */
-    attrs: string[][];
+    attrs: string[][] | null;
     /**
      * Block-level token.
      */
@@ -232,7 +232,7 @@ export type MarkdownItToken = {
     /**
      * Child nodes.
      */
-    children: MarkdownItToken[];
+    children: MarkdownItBaseToken[] | null;
     /**
      * Tag contents.
      */
@@ -252,7 +252,7 @@ export type MarkdownItToken = {
     /**
      * Beginning/ending line numbers.
      */
-    map: number[];
+    map: number[] | null;
     /**
      * Markup text.
      */
@@ -273,6 +273,15 @@ export type MarkdownItToken = {
      * Token type.
      */
     type: string;
+};
+/**
+ * markdown-it extended token.
+ */
+export type MarkdownItExtendedToken = {
+    /**
+     * Child nodes.
+     */
+    children: MarkdownItExtendedToken[] | null;
     /**
      * Line number (1-based).
      */
@@ -282,6 +291,10 @@ export type MarkdownItToken = {
      */
     line: string;
 };
+/**
+ * markdown-it token.
+ */
+export type MarkdownItToken = MarkdownItBaseToken & MarkdownItExtendedToken;
 export type MicromarkTokenType = import("micromark-util-types").TokenType;
 /**
  * micromark token.
@@ -410,7 +423,7 @@ export type Rule = {
 /**
  * Method used by the markdown-it parser to parse input.
  */
-export type MarkdownItParse = (src: string, env: any) => any[];
+export type MarkdownItParse = (src: string, env: any) => MarkdownItBaseToken[];
 /**
  * Instance of the markdown-it parser.
  */
