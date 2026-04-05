@@ -1,0 +1,10 @@
+services:
+  markdownlintrulehelpers:
+    image: markdownlintrulehelpers
+    build:
+      context: helpers
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000
